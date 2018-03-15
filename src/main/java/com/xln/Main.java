@@ -29,6 +29,7 @@ public class Main {
         int totalRecordCount = 0;
         
         //Load XLS File to Array List
+        System.out.println("Gathering XLS Records to Array List...");
         ArrayList SMDSDocXLS = ExcelTools.ExcelIteratorRead("XLStoImport.xlsx");
 
         //Get Total Records
@@ -38,14 +39,16 @@ public class Main {
         List<DatabaseTableModel> cleanedSMDSDocsList = new ArrayList<>();
 
         //Sanitize Array List for DB Import
+        System.out.println("Sanitizing XLS Records...");
         for (Iterator iterator = SMDSDocXLS.iterator(); iterator.hasNext();) {
             List list = (List) iterator.next();
-            if (list.size() == 15) {
+            if (list.size() == 6) { //needs to be same size as columns in row
                 cleanedSMDSDocsList.add(ExcelTools.SanitizeArrayListExcel(list));
             }
         }
 
         //Batch Update DB Records
+        System.out.println("Inserting XLS Records to Database...");
         SQLTable.batchUpdateDatabaseTable(cleanedSMDSDocsList);
         
         //Complete Task Timer

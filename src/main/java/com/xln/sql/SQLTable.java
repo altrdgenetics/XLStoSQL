@@ -26,20 +26,18 @@ public class SQLTable {
         try {
             conn = DBConnection.connectToDB();
             String sql = "UPDATE Activity SET "
-                    + "action           = ? "  //01
-                    + "WHERE id         = ? "  //02
-                    + "AND   casetype   = ? "  //03
-                    + "AND   casenumber = ? "  //04
-                    + "AND   action     = ? "; //05
+                    + "action       = ? "  //01
+                    + "WHERE id     = ? "  //02
+                    + "AND   action = ? "; //03
             ps = conn.prepareStatement(sql);
             conn.setAutoCommit(false);
             
             for (DatabaseTableModel item : list){
+                int keyID = (int) Double.parseDouble(item.getColumnA());
+                                
                 ps.setString(1, item.getColumnE()); //action (NEW)
-                ps.setString(2, item.getColumnA()); //id
-                ps.setString(3, item.getColumnB()); //casetype
-                ps.setString(4, item.getColumnC()); //casenumber
-                ps.setString(5, item.getColumnD()); //action (OLD)
+                ps.setInt   (2, keyID);             //id
+                ps.setString(3, item.getColumnD()); //action (OLD)
 
                 ps.addBatch();
                 if (++count % Global.getBATCH_SIZE() == 0) {
