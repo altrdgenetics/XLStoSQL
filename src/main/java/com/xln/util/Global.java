@@ -13,8 +13,16 @@ import java.text.SimpleDateFormat;
  */
 public class Global {
     
+    //Global Variables
+    private static final int BATCH_SIZE = 1000;
+    
     //Date Time Formatters
     private static final SimpleDateFormat mmddyyyyhhmmssa = new SimpleDateFormat("EEE, MM/dd/yyyy hh:mm:ss a");
+    
+    //Getters
+    public static int getBATCH_SIZE() {
+        return BATCH_SIZE;
+    }
 
     public static SimpleDateFormat getMmddyyyyhhmmssa() {
         return mmddyyyyhhmmssa;
