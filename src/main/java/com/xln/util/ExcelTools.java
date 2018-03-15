@@ -23,6 +23,14 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  */
 public class ExcelTools {
  
+    /** Loops through the Cells
+     * 
+     * NOTE: MAKE SURE BLANK CELLS ARE 'NULL' else THE iterator will
+     * skip to the next line
+     * 
+     * @param list
+     * @return 
+    */
     public static DatabaseTableModel SanitizeArrayListExcel(List list) {
         DatabaseTableModel item = new DatabaseTableModel();
         item.setColumnA(list.get(0).toString().trim().equals("NULL") ? null : list.get(0).toString().trim());
@@ -31,8 +39,6 @@ public class ExcelTools {
         item.setColumnD(list.get(3).toString().trim().equals("NULL") ? null : list.get(3).toString().trim());
         item.setColumnE(list.get(4).toString().trim().equals("NULL") ? null : list.get(4).toString().trim());
         item.setColumnF(list.get(5).toString().trim().equals("NULL") ? null : list.get(5).toString().trim());
-        item.setColumnG(list.get(6).toString().trim().equals("NULL") ? null : list.get(6).toString().trim());
-        item.setColumnH(list.get(7).toString().trim().equals("NULL") ? null : list.get(7).toString().trim());
 
         return item;
     }

@@ -56,10 +56,6 @@ public class Main {
                 + StringUtilities.convertLongToTime(lEndTime - lStartTime);
         
         System.out.println(finishedText);
-
     }
-    
-    
-    
     
 }

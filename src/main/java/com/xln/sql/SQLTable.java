@@ -35,11 +35,11 @@ public class SQLTable {
             conn.setAutoCommit(false);
             
             for (DatabaseTableModel item : list){
-                ps.setString(1, item.getColumnG());
-                ps.setString(2, item.getColumnA());
-                ps.setString(3, item.getColumnC());
-                ps.setString(4, item.getColumnE());
-                ps.setString(5, item.getColumnF());
+                ps.setString(1, item.getColumnE()); //action (NEW)
+                ps.setString(2, item.getColumnA()); //id
+                ps.setString(3, item.getColumnB()); //casetype
+                ps.setString(4, item.getColumnC()); //casenumber
+                ps.setString(5, item.getColumnD()); //action (OLD)
 
                 ps.addBatch();
                 if (++count % Global.getBATCH_SIZE() == 0) {
